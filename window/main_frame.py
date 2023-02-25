@@ -1,5 +1,5 @@
 import customtkinter
-from command import database_connection
+from command import database_backup
 
 
 def main_frame(root_element: customtkinter.CTk) -> customtkinter.CTkFrame:
@@ -28,7 +28,7 @@ def main_frame(root_element: customtkinter.CTk) -> customtkinter.CTkFrame:
                                      height=50,
                                      border_width=2,
                                      corner_radius=5,
-                                     command=lambda: database_connection.database_connection(db_uri_input.get(), db_name_input.get()))
+                                     command=lambda: database_backup.database_backup(db_uri_input.get(), db_name_input.get()))
     button.pack(pady=50, padx=50)
 
     return frame
