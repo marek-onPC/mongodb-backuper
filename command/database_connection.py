@@ -11,8 +11,12 @@ def database_connection(db_uri: str = "", db_name: str = "") -> None:
     else:
         db_client = _init_database_client(db_uri=db_uri, db_name=db_name)
         collections = db_client.collections()
+        print(f"Connect to db: {db_client.name()}")
 
         for collection in collections:
-            print(collection)
+            print("Collection: " + collection)
 
-        print(f"Connect to db {db_client.name()}")
+            entries = db_client.get_collection(collection).find()
+
+            while entries.alive:
+                print(entries.next())

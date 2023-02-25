@@ -1,6 +1,5 @@
 from pymongo import MongoClient, database
 from gridfs import Collection
-import json
 
 
 class DatabaseClient:
@@ -25,3 +24,10 @@ class DatabaseClient:
         collections = database.list_collection_names()
 
         return collections
+
+
+    def get_collection(self, collection_name: str) -> Collection:
+        database = self.connection()
+        collection = database[collection_name]
+
+        return collection
