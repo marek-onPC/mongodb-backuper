@@ -1,6 +1,7 @@
 from database.client import DatabaseClient
 from bson import json_util
 import json
+import customtkinter
 
 
 def _init_database_client(db_uri: str, db_name: str) -> DatabaseClient:
@@ -8,12 +9,23 @@ def _init_database_client(db_uri: str, db_name: str) -> DatabaseClient:
 
 
 def database_backup(db_uri: str = "", db_name: str = "") -> None:
+    modal = customtkinter.CTkToplevel()
+    modal.title("Notification")
+    modal.geometry("400x150")
+
+    info_label = customtkinter.CTkLabel(master=modal)
+    info_label.pack(pady=20, padx=20)
+
+    close_button = customtkinter.CTkButton(
+        master=modal, text="Acknowledge", command=modal.destroy)
+    close_button.pack(pady=10, padx=20)
+
     if db_uri == "" or db_name == "":
-        print("No db_uri provided")
+        info_label.configure(text="No db_uri provided")
+
     else:
         db_client = _init_database_client(db_uri=db_uri, db_name=db_name)
         collections = db_client.collections()
-        print(f"Connect to db: {db_client.name()}")
 
         with open("database_backup.json", "w", encoding="utf-8") as file:
             collection_dict: dict[str, list] = {}
@@ -29,4 +41,5 @@ def database_backup(db_uri: str = "", db_name: str = "") -> None:
 
             json.dump(collection_dict, file, ensure_ascii=False, indent=4)
 
-        print(f"Db: {db_client.name()} saved to file")
+        info_label.configure(
+            text=f"Database {db_client.name()} \n saved to file database_backup.json")
