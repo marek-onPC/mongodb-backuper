@@ -6,7 +6,7 @@ customtkinter.set_default_color_theme("dark-blue")
 
 app = customtkinter.CTk()
 app.title("MongoDB backuper")
-app.geometry("640x480")
+app.geometry("800x640")
 
 frame = main_frame.main_frame(root_element=app)
 
