@@ -23,12 +23,14 @@ def database_restore(db_uri: str = "", db_name: str = "", db_file: str | None = 
         info_label.configure(text="No db_uri provided")
 
     else:
-        for key in db_file:
-            print(key)
-
         db_client = _init_database_client(db_uri=db_uri, db_name=db_name)
 
-        print("DUMMY RESTORE WRAPPER")
+        for collection in db_file:
+            for item in db_file[collection]:
+                del item["_id"]
+
+            db_client.get_collection(
+                collection).insert_many(db_file[collection])
 
         info_label.configure(
-            text=f"Database {db_client.name()} \n saved to file database_backup.json")
+            text=f"Database restored!")
