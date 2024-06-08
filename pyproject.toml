@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "mongodb-backuper"
+version = "1.0.0"
+description = ""
+authors = ["Marek Smieja <67819687+marek-onPC@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+autopep8 = "2.0.1"
+customtkinter = "5.1.2"
+darkdetect = "0.8.0"
+dnspython = "2.3.0"
+pycodestyle = "2.10.0"
+pymongo = "4.3.3"
+tomli = "2.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
