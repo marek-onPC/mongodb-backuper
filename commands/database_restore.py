@@ -1,5 +1,4 @@
-from typing import Any
-from database.client import DatabaseClient
+from commands.db_client import DatabaseClient
 import customtkinter
 
 

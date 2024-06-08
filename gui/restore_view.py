@@ -1,6 +1,6 @@
 import customtkinter
 import json
-from command import database_restore
+from commands import database_restore
 
 
 def _select_backup_file():

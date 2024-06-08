@@ -1,5 +1,5 @@
 import customtkinter
-from window import backup_view, restore_view
+from gui import backup_view, restore_view
 
 
 def main_frame(root_element: customtkinter.CTk) -> customtkinter.CTkFrame:

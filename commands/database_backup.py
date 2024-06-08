@@ -1,4 +1,4 @@
-from database.client import DatabaseClient
+from commands.db_client import DatabaseClient
 from bson import json_util
 import json
 import customtkinter

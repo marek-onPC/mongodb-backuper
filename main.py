@@ -1,5 +1,5 @@
 import customtkinter
-from window import main_frame
+from gui import main_frame
 
 customtkinter.set_appearance_mode("dark")
 customtkinter.set_default_color_theme("dark-blue")
