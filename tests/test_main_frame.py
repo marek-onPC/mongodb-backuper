@@ -1,12 +1,11 @@
-from typing import cast
+from typing import Any, Generator, cast
 import pytest
-from unittest.mock import MagicMock
 import customtkinter
 from gui import main_frame
 
 
 @pytest.fixture
-def mock_app():
+def mock_app() -> Generator[tuple[customtkinter.CTk, customtkinter.CTkFrame], Any, None]:
     customtkinter.set_appearance_mode("dark")
     customtkinter.set_default_color_theme("dark-blue")
     
@@ -20,7 +19,9 @@ def mock_app():
     app.destroy()
 
 
-def test_main_tabs(mock_app):
+def test_main_tabs(
+    mock_app: Generator[tuple[customtkinter.CTk, customtkinter.CTkFrame], Any, None],
+):
     app, frame = mock_app
 
     tab = frame.winfo_children()[0]
